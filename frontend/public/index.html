@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Коворкинги — поиск и бронирование мест</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-inner">
+      <div class="brand"><span class="logo">◧</span> Коворкинги</div>
+      <div class="sub">Поиск свободных рабочих мест по оборудованию и бронирование</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Панель поиска -->
+    <section class="panel">
+      <h2>Поиск свободного места</h2>
+      <form id="search-form" class="grid">
+        <label>Дата <input type="date" id="f-date" required></label>
+        <label>С <input type="time" id="f-start" value="10:00" step="1800" required></label>
+        <label>До <input type="time" id="f-end" value="14:00" step="1800" required></label>
+        <label>Коворкинг
+          <select id="f-coworking"><option value="">Любой</option></select>
+        </label>
+        <label>Тип места
+          <select id="f-type">
+            <option value="">Любой</option>
+            <option value="open">Открытое пространство</option>
+            <option value="fixed">Фиксированное место</option>
+            <option value="cabinet">Кабинет</option>
+            <option value="meeting">Переговорная</option>
+          </select>
+        </label>
+      </form>
+      <div class="eq-title">Необходимое оборудование</div>
+      <div id="equipment" class="chips"></div>
+
+      <div class="actions">
+        <button id="btn-search" class="btn primary">Найти свободные места</button>
+        <button id="btn-bookings" class="btn">Все бронирования</button>
+        <button id="btn-promos" class="btn">Акции и тарифы</button>
+      </div>
+    </section>
+
+    <section>
+      <div class="result-head">
+        <h2 id="result-title">Результаты</h2>
+        <span id="result-meta" class="muted"></span>
+      </div>
+      <div id="result" class="result"><p class="muted">Выберите параметры и нажмите «Найти свободные места».</p></div>
+    </section>
+  </main>
+
+  <!-- Окно бронирования -->
+  <dialog id="book-dialog">
+    <form id="book-form" method="dialog">
+      <h3 id="book-title">Бронирование</h3>
+      <p id="book-sub" class="muted"></p>
+      <label>Имя / организация <input id="b-name" required maxlength="100"></label>
+      <label>Телефон <input id="b-phone" type="tel" placeholder="+7 900 000-00-00"></label>
+      <div id="quote" class="quote">Рассчитываем стоимость…</div>
+      <div class="dialog-actions">
+        <button type="button" id="b-cancel" class="btn">Отмена</button>
+        <button type="submit" id="b-submit" class="btn primary">Забронировать</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
